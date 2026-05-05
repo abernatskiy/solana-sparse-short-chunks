@@ -22,29 +22,6 @@ const dataSource = new DataSourceBuilder()
   // Find out the current first slot from
   //   curl https://portal.sqd.dev/datasets/solana-mainnet/metadata
   .setBlockRange({from: 400021385})
-  //
-  // Block data returned by the data source has the following structure:
-  //
-  // interface Block {
-  //   header: BlockHeader
-  //   transactions: Transaction[]
-  //   instructions: Instruction[]
-  //   logs: LogMessage[]
-  //   balances: Balance[]
-  //   tokenBalances: TokenBalance[]
-  //   rewards: Reward[]
-  // }
-  //
-  // For each block item we can specify a set of fields we want to fetch via `.setFields()` method.
-  // Think about it as of SQL projection.
-  //
-  // Accurate selection of only required fields can have a notable positive impact
-  // on performance when data is sourced from Subsquid Network.
-  //
-  // We do it below only for illustration as all fields we've selected
-  // are fetched by default.
-  //
-  // It is possible to override default selection by setting undesired fields to `false`.
   .setFields({
     block: { // block header fields
       timestamp: true
